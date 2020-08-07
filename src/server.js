@@ -21,9 +21,7 @@ app.use(express.urlencoded({ extended: false }));
 // Variables Globales
 
 // Rutas
-app.get('/', (req, res) => {
-    res.render('index');
-});
+app.use(require('./routes/index.routes'));
 
 // Archivos estaticos
 app.use(express.static(path.join(__dirname, 'public')));

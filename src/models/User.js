@@ -27,4 +27,4 @@ UserSchema.methods.matchpassword = function (password) {
     return await bcrypt.compare(password, this.password);
 };
 
-module.exports = module('User', UserSchema);
+module.exports = model('User', UserSchema);

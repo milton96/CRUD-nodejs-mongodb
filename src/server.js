@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // Rutas
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.send('Hello World!!');
 });
 
 // Archivos estaticos

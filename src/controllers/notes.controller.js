@@ -5,11 +5,12 @@ notesController.renderNotes = (req, res) => {
 };
 
 notesController.renderNoteForm = (req, res) => {
-    res.send('note add');
+    res.render('notes/new-note');
 };
 
 notesController.createNewNote = (req, res) => {
     res.send('create new note');
+    console.log(req.body);
 };
 
 notesController.renderEditNote = (req, res) => {

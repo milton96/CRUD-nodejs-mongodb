@@ -11,8 +11,8 @@ const {
 } = require('../controllers/notes.controller');
 
 router.get('/notes', renderNotes);
-router.get('/notes/add', renderNoteForm);
-router.post('/notes/add', createNewNote);
+router.get('/notes/new-note', renderNoteForm);
+router.post('/notes/new-note', createNewNote);
 router.get('/notes/edit/:id', renderEditNote);
 router.put('/notes/edit/:id', updateNote);
 router.delete('/notes/delete/:id', deleteNote);

@@ -13,6 +13,7 @@ Módulos de node utilizados para este ejemplo.
 * passport
 * passport-local
 * morgan
+* handlebars
 
 ### Módulos de desarrollo
 * dotenv

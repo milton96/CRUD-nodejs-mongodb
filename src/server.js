@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const handlebars = require('express-handlebars');
+const morgan = require('morgan');
 
 // Inicializaciones
 const app = express();
@@ -15,7 +16,9 @@ app.engine('.hbs', handlebars({
     extname: '.hbs',
 }));
 app.set('view engine', '.hbs');
+
 // Middlewares
+app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 
 // Variables Globales

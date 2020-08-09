@@ -12,6 +12,7 @@ Módulos de node utilizados para este ejemplo.
 * mongoose
 * passport
 * passport-local
+* morgan
 
 ### Módulos de desarrollo
 * dotenv

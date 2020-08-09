@@ -16,20 +16,20 @@ notesController.createNewNote = async (req, res) => {
         title, description
     });
     await note.save();
-    res.status(200).send('Ok');
+    res.redirect('/notes');
 };
 
 notesController.renderEditNote = (req, res) => {
-    res.send('render edit form');
-    console.log(req.params);
+    res.sed('edit note');
 };
 
 notesController.updateNote = (req, res) => {
     res.send('edit new note');
 };
 
-notesController.deleteNote = (req, res) => {
-    res.send('note deleted');
+notesController.deleteNote = async (req, res) => {
+    await Note.findByIdAndDelete(req.params.id);
+    res.redirect('/notes');
 };
 
 module.exports = notesController;

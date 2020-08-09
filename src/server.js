@@ -4,6 +4,7 @@ const handlebars = require('express-handlebars');
 const morgan = require('morgan');
 const _handlebars = require('handlebars');
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
+const methodOverride = require('method-override');
 
 // Inicializaciones
 const app = express();
@@ -23,6 +24,7 @@ app.set('view engine', '.hbs');
 // Middlewares
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride('_method'))
 
 // Variables Globales
 

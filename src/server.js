@@ -5,6 +5,8 @@ const morgan = require('morgan');
 const _handlebars = require('handlebars');
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
 const methodOverride = require('method-override');
+const flash = require('connect-flash');
+const session = require('express-session');
 
 // Inicializaciones
 const app = express();
@@ -24,9 +26,19 @@ app.set('view engine', '.hbs');
 // Middlewares
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
-app.use(methodOverride('_method'))
+app.use(methodOverride('_method'));
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+}));
+app.use(flash());
 
 // Variables Globales
+app.use((req, res, next) => {
+    res.locals.success_msg = req.flash('success_msg');
+    next();
+});
 
 // Rutas
 app.use(require('./routes/index.routes'));

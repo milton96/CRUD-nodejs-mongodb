@@ -19,12 +19,15 @@ notesController.createNewNote = async (req, res) => {
     res.redirect('/notes');
 };
 
-notesController.renderEditNote = (req, res) => {
-    res.sed('edit note');
+notesController.renderEditNote = async (req, res) => {
+    let note = await Note.findById(req.params.id);
+    res.render('notes/edit-note.hbs', { note });
 };
 
-notesController.updateNote = (req, res) => {
-    res.send('edit new note');
+notesController.updateNote = async (req, res) => {
+    const { title, description } = req.body;
+    await Note.findByIdAndUpdate(req.params.id, { title, description });
+    res.redirect('/notes');
 };
 
 notesController.deleteNote = async (req, res) => {

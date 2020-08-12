@@ -4,7 +4,8 @@ const MONGODB_URI = `mongodb+srv://${MONGODB_USER}:${MONGODB_PASSWORD}@${MONGODB
 
 mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex: true
 }).then(db => {
     console.log('Se estableció una conexión a la base de datos.');
 }).catch(err => {

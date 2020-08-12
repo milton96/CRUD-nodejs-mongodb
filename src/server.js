@@ -9,7 +9,7 @@ const {
 const methodOverride = require("method-override");
 const flash = require("connect-flash");
 const session = require("express-session");
-const { SUCCESS } = require("./helpers/messages.helper");
+const { SUCCESS, WARNING, DANGER } = require("./helpers/messages.helper");
 
 // Inicializaciones
 const app = express();
@@ -45,6 +45,7 @@ app.use(flash());
 // Variables Globales
 app.use((req, res, next) => {
   res.locals.success_msg = req.flash(SUCCESS);
+  res.locals.danger_msg = req.flash(DANGER);
   next();
 });
 

@@ -26,3 +26,12 @@
     </button>
 </div>
 {{/if}}
+
+{{#if login_error}}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>{{login_error}}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Cerrar">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{{/if}}

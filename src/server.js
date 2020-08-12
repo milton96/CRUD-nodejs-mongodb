@@ -10,9 +10,11 @@ const methodOverride = require("method-override");
 const flash = require("connect-flash");
 const session = require("express-session");
 const { SUCCESS, WARNING, DANGER } = require("./helpers/messages.helper");
+const passport = require('passport');
 
 // Inicializaciones
 const app = express();
+require('./config/passport');
 
 // Configuraciones
 app.set("port", process.env.PORT || 4000);
@@ -40,12 +42,16 @@ app.use(
     saveUninitialized: true,
   })
 );
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash());
 
 // Variables Globales
 app.use((req, res, next) => {
   res.locals.success_msg = req.flash(SUCCESS);
   res.locals.danger_msg = req.flash(DANGER);
+  res.locals.login_error = req.flash('error');
+  res.locals.user = req.user || null;
   next();
 });
 

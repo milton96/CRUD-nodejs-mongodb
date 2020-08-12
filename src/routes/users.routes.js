@@ -7,11 +7,12 @@ const {
   signIn,
   logout,
 } = require('../controllers/users.controller');
+const { authenticated, isAuthenticated } = require('../helpers/validateAuth');
 
 router.get('/signup', renderSignUpForm);
 router.post('/signup', signUp);
-router.get('/signin', renderSignInForm);
-router.post('/signin', signIn);
-router.get('/logout', logout);
+router.get('/signin', authenticated, renderSignInForm);
+router.post('/signin', authenticated, signIn);
+router.get('/logout', isAuthenticated, logout);
 
 module.exports = router;

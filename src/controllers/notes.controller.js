@@ -34,6 +34,7 @@ notesController.renderEditNote = async (req, res) => {
 
 notesController.updateNote = async (req, res) => {
     const { title, description } = req.body;
+    let note = await Note.findById(req.params.id);
     if (note.user != req.user._id) {
         req.flash(WARNING, 'No puedes modificar las notas de otro usuario.');
         return res.redirect('/notes');
@@ -44,6 +45,7 @@ notesController.updateNote = async (req, res) => {
 };
 
 notesController.deleteNote = async (req, res) => {
+    let note = await Note.findById(req.params.id);
     if (note.user != req.user._id) {
         req.flash(WARNING, 'No puedes eliminar las notas de otro usuario.');
         return res.redirect('/notes');

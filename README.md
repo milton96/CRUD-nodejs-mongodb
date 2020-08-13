@@ -14,6 +14,7 @@ Módulos de node utilizados para este ejemplo.
 * passport-local
 * morgan
 * handlebars
+* connect-mongo
 
 ### Módulos de desarrollo
 * dotenv

@@ -41,10 +41,6 @@ app.use(methodOverride("_method"));
 const MongoStore = connectMongo(session)
 app.use(
   session({
-    cookie: {
-      secure: true,
-      maxAge: 86400000
-    },
     store: new MongoStore({
       mongooseConnection: mongoose.connection
     }),

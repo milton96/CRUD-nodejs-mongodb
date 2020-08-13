@@ -7,5 +7,5 @@ const PORT = app.get('port');
 
 app.listen(PORT, () => {
   console.log(`Servidor en el puerto ${PORT}`);
-  //console.log('Environment:', process.env.NODE_ENV);
+  console.log('Environment:', process.env.NODE_ENV);
 });

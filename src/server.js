@@ -11,6 +11,8 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const { SUCCESS, WARNING, DANGER } = require("./helpers/messages.helper");
 const passport = require('passport');
+const connectMongo = require('connect-mongo');
+const mongoose = require('mongoose');
 
 // Inicializaciones
 const app = express();
@@ -30,13 +32,22 @@ app.engine(
   })
 );
 app.set("view engine", ".hbs");
+//app.set('trust proxy', 1)
 
 // Middlewares
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
+const MongoStore = connectMongo(session)
 app.use(
   session({
+    cookie: {
+      secure: true,
+      maxAge: 86400000
+    },
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection
+    }),
     secret: "secret",
     resave: true,
     saveUninitialized: true,

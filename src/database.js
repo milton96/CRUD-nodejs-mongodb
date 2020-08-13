@@ -5,9 +5,10 @@ const MONGODB_URI = `mongodb+srv://${MONGODB_USER}:${MONGODB_PASSWORD}@${MONGODB
 mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true
+    useCreateIndex: true,
+    useFindAndModify: true
 }).then(db => {
-    console.log('Se estableció una conexión a la base de datos.');
+    console.log('Se estableció una conexión a la base de datos: ', db.connection.host);
 }).catch(err => {
-    console.log('Ha ocurrido un error al conectar a la base de datos.');
+    console.error(err);
 });
